@@ -1,9 +1,9 @@
 body {
-  background-color: #F2F2F2 !important;
+  background-color: #f2f2f2 !important;
 }
 
 .App {
-  background-color: #F2F2F2;
+  background-color: #f2f2f2;
 }
 
 .App-loader-container {
@@ -27,7 +27,7 @@ body {
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+    animation: App-logo-spin infinite 0s linear;
   }
 }
 
@@ -35,7 +35,7 @@ body {
   display: flex;
   flex-direction: column;
   font-size: calc(22px + 2vmin);
-  color: #0A0A0A;
+  color: #0a0a0a;
   padding-left: 16px;
 }
 

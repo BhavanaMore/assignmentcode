@@ -1,28 +1,25 @@
-import React, { Component } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { Container, Card, Button, Row, Col } from 'react-bootstrap';
-import RocketLaunchDetails from './components/RocketLaunchDetails';
-import querystring from 'querystring';
-import './App.css';
-import loader from './loadRocket.gif';
+import React, { Component } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Container, Card, Button, Row, Col } from "react-bootstrap";
+import RocketLaunchDetails from "./components/RocketLaunchDetails";
+import querystring from "querystring";
+import "./App.css";
 
 const API_BASE_URL = "https://api.spacexdata.com/v3/launches?limit=100";
 
 class App extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
       items: [],
       isLoaded: false,
       filters: {
-        limit: 150,
+        limit: 5,
         launch_year: undefined,
         launch_success: undefined,
         land_success: undefined,
       },
-    }
-
+    };
   }
 
   getUpdatedApiUrl(filters = {}) {
@@ -33,11 +30,11 @@ class App extends Component {
     const URL = this.getUpdatedApiUrl(filters);
     this.setState({ isLoaded: false, filters });
     fetch(URL)
-      .then(response => response.json())
-      .then(data => {
+      .then((response) => response.json())
+      .then((data) => {
         this.setState({
           isLoaded: true,
-          data
+          data,
         });
       });
   }
@@ -60,22 +57,19 @@ class App extends Component {
     this.fetchAPI(filters);
   }
 
-
   render() {
-
     const { isLoaded, data } = this.state;
-    const uniqueLaunchYears = new Array(16).fill(0).map((_, index) => 2006 + index);
+    const uniqueLaunchYears = new Array(16)
+      .fill(0)
+      .map((_, index) => 2006 + index);
 
     if (!isLoaded) {
-      return <div className="App-loader-container">
-        <div className="App-loader-box">
-          <img src={loader} alt="loading..." />
+      return (
+        <div className="App-loader-container">
+          <div className="App-loader-box"></div>
         </div>
-      </div>
-    }
-
-    else {
-
+      );
+    } else {
       return (
         <div className="App">
           <h1 className="App-header">SpaceX Launch Programs</h1>
@@ -215,14 +209,13 @@ class App extends Component {
             </Row>
             <div>
               <h5 className="App-Developers-name">
-                Developed by : Jasvinder Singh, Jennifer B 
+                Developed by :Bhavana More
               </h5>
             </div>
           </Container>
         </div>
       );
     }
-
   }
 }
 
